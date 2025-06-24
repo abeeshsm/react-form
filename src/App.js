@@ -1,23 +1,19 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+import ContactForm from './ContactForm';
+import AdminPage from './AdminPage';
 
 function App() {
+  const [view, setView] = useState('form'); // 'form' or 'admin'
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <h1>Simple Contact App (LocalStorage)</h1>
+      <button onClick={() => setView('form')}>Contact Form</button>
+      <button onClick={() => setView('admin')}>Admin Panel</button>
+
+      <hr />
+
+      {view === 'form' ? <ContactForm /> : <AdminPage />}
     </div>
   );
 }
